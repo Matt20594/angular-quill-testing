@@ -1,1 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Young+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&family=Young+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&family=Young+Serif&display=swap');
+
+.ql-font-Arial { font-family: 'Arial', sans-serif; }
+.ql-font-Calibri { font-family: 'Calibri', sans-serif; }
+.ql-font-Lucida { font-family: 'Lucida Sans Unicode', sans-serif; }
+.ql-font-Montserrat { font-family: 'Montserrat', sans-serif; }
+.ql-font-Open { font-family: 'Open Sans', sans-serif; }
+.ql-font-Roboto { font-family: 'Roboto', sans-serif; }
+.ql-font-Times-New-Roman { font-family: 'Times New Roman', sans-serif; }
+.ql-font-Verdana { font-family: 'Verdana', sans-serif; }
+
+.ql-snow .ql-formats .ql-font.ql-picker {
+    width: 140px;
+}
+
+.ql-snow {
+    .ql-picker {
+        &.ql-font {
+            .ql-picker-label[data-value],
+            .ql-picker-item[data-value] {
+                &::before {
+                    content: attr(data-value)!important;
+                    font-family: attr(data-value);
+                }
+            }
+        }
+        &.ql-size {
+            .ql-picker-label[data-value],
+            .ql-picker-item[data-value] {
+                &::before{
+                    content: attr(data-value)!important;
+                }
+            }
+        }
+    }
+}
