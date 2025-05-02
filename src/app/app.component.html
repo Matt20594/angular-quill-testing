@@ -1,2 +1,25 @@
-<h1>This is the main page</h1>
-<app-quill-editor></app-quill-editor>
+<ion-split-pane when="xs" contentId="main">
+    <ion-menu contentId="main">
+        <ion-header>
+            <ion-toolbar color="tertiary">
+                <ion-title>Quill editor</ion-title>
+            </ion-toolbar>
+        </ion-header>
+
+        <ion-content class="ion-padding">
+            <app-quill-editor></app-quill-editor>
+        </ion-content>
+    </ion-menu>
+
+    <div class="ion-page" id="main">
+        <ion-header>
+            <ion-toolbar>
+                <ion-title>This is the main page Header</ion-title>
+            </ion-toolbar>
+        </ion-header>
+
+        <ion-content class="ion-padding">
+            <app-main-page></app-main-page>
+        </ion-content>
+    </div>
+</ion-split-pane>

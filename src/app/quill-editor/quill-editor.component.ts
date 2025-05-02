@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalStorageService } from '../Services/local-storage.service';
+
 import Quill from 'quill';
 import 'quill/dist/quill.snow.css';
-
 
 @Component({
   selector: 'app-quill-editor',
@@ -10,7 +11,11 @@ import 'quill/dist/quill.snow.css';
   styleUrl: './quill-editor.component.css'
 })
 export class QuillEditorComponent implements OnInit {
-  constructor() { }
+  public quill: any;
+
+  constructor(
+    public localStorageService: LocalStorageService
+  ) { }
   
   ngOnInit() {
     const fonts:any = Quill.import('formats/font');
@@ -21,9 +26,9 @@ export class QuillEditorComponent implements OnInit {
       quillFontSize.whitelist = [false, '8px','9px','10px','12px','14px','16px','20px','24px','32px','42px','54px','68px','84px','98px'];
       Quill.register(quillFontSize, true);
 
-    const quill = new Quill('#editor', {
+    this.quill = new Quill('#editor', {
       theme: 'snow',
-      placeholder: 'Compose an epic...',
+      placeholder: 'Write something...',
       modules: {
         toolbar: [
           [
@@ -49,5 +54,20 @@ export class QuillEditorComponent implements OnInit {
         ]
       },
     })
+
+    this.quill.root.innerHTML = this.localStorageService.getItem('quillContent') || '';
+  }
+
+  public setContent(): void {
+    this.localStorageService.setItem('quillContent', this.quill.root.innerHTML);
+  }
+
+  public getContent(): void {
+    this.quill.root.innerHTML = this.localStorageService.getItem('quillContent') || '';
+  }
+
+  public clearContent(): void {
+    this.localStorageService.removeItem('quillContent');
+    this.quill.root.innerHTML = '';
   }
 }
